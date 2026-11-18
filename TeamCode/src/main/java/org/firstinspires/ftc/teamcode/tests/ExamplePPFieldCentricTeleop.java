@@ -20,7 +20,7 @@ public class ExamplePPFieldCentricTeleop extends OpMode {
     public void loop() {
         DrivePowers powers = ManualDrive.fieldCentric(
                 -gamepad1.left_stick_y,
-                gamepad1.left_stick_x,
+                -gamepad1.left_stick_x,
                 gamepad1.right_stick_x,
                 follower.pose().heading()
         );
@@ -28,11 +28,11 @@ public class ExamplePPFieldCentricTeleop extends OpMode {
         ManualDrive.driveOrHold(follower, powers); //automatically holds position when driver input stops
 
         // relocalise button - Use in Right Front Corner
-        if (gamepad1.y) {
-            Pose cornerPose = new Pose(9, 9, Math.toRadians(0));
-            // On the fly Pose creation, we don't recommend this for Autonomous. Only accepts radians for heading
-            follower.setPose(cornerPose); // overrides our pose
-        }
+//        if (gamepad1.y) {
+//            Pose cornerPose = new Pose(0, 0, Math.toRadians(0));
+//            // On the fly Pose creation, we don't recommend this for Autonomous. Only accepts radians for heading
+//            follower.setPose(cornerPose); // overrides our pose
+//        }
 
         follower.update();
         Pose robotPose = follower.pose(); // returns a Pose object
